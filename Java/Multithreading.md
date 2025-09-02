@@ -68,10 +68,18 @@ Steps:
 > `run()`: just a normal method, no new thread is created.
 
 ### Thread vs Runnable
-- Inheritance:
-	- Extending `Thread`: Cannot extend another class (must extend `Thread`)
-	- Implementing `Runnable`: Can extend another class (more flexible) 
-- 
+**I**nheritance vs **C**omposition
+- **I**: Extending `Thread`: ~~Cannot extend another class (must extend `Thread`)~~
+	- We are saying: "`MyThread` is a `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread
+- **C**: Implementing `Runnable`: ~~Can extend another class (more flexible)~~
+	- We are saying: "`MyRunnable` has work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object;
+		```java
+		Runnable task = () -> System.out.println("Running in a thread!");
+		Thread thread = new Thread(task);
+		thread.start();
+		```
+
+
 
 
 #todo
