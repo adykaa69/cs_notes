@@ -9,4 +9,13 @@
 > A `Dog` **"is a(n)"** `Animal`
 
 ## Composition (HAS-A)
+- **Composition** in OOP represents a "**has-a**" **relationship**
+> [!example] 
+>```java
+> class Tail { }
+> class Dog { 
+>     private Tail tail;
+> }
+> ```
+> `Dog` "**has a**" `Tail`
 
