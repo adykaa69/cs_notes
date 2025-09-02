@@ -17,7 +17,7 @@
 | **Testability**         | Classes can be tested independently, and mock objects can replace real ones for unit testing.              |
 | **Scalability**         | Easier to scale as projects grow — you can extend existing functionality using inheritance or composition. |
 | **Real-world modeling** | Objects naturally represent entities like Customer, Order, Product, etc.                                   |
-### [[Classes and Objects ]]
+### Classes and Objects 
 - Classes and objects are the two main aspects of object-oriented programming.
 	- A class is a template for objects, and an object is an instance of a class.
 > [!example]

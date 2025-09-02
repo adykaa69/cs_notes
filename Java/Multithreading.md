@@ -81,8 +81,8 @@ Steps:
 		```
 	- --> **Composition** (the thread object _contains_ the task instead of _being_ the task)
 - --> 
-	- **Composition** is generally more flexible and loosely coupled than **Inheritance**
-	- A `Thread` "has a" `Runnable` is the correct model, not Task "is a" Thread.
+	- **Composition** is generally more flexible and loosely coupled than **Inheritance**.
+	- A `Thread` "has a" `Runnable` is the correct model, not `task` "is a" `Thread`.
 #### Inheritance limitation
 - In Java, a class can only extend **one** class.
 	- Extending `Thread` - losing the ability to extend any other class

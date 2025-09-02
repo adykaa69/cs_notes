@@ -1,3 +1,6 @@
+- [[#Inheritance (IS-A)]]
+- [[#Composition (HAS-A)]]
+
 ## Inheritance (IS-A)
 - **Inheritance** in OOP represents an **"is-a"** **relationship**:
 	- If class `B` extends class `A` -> Every object of type `B` is also an object of type `A`
