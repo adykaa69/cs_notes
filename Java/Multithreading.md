@@ -73,7 +73,7 @@ Steps:
 	- We are saying: "My class _[[is a]]_ `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread (violating [[IS-A]] principle)
 	- --> **Inheritance**
 - Implementing `Runnable`:
-	- We are saying: "My class has a work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object ([[HAS-A]]);
+	- We are saying: "My class _[[has a]]_ work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object ([[HAS-A]] principle);
 		```java
 		Runnable task = () -> System.out.println("Running in a thread!");
 		Thread thread = new Thread(task);
