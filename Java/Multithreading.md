@@ -68,12 +68,12 @@ Steps:
 > `run()`: just a normal method, no new thread is created.
 
 ### Thread vs Runnable
-#### Inheritance vs Composition
-- Extending `Thread`: ~~Cannot extend another class (must extend `Thread`)~~
+#### [[Inheritance vs Composition]]
+- Extending `Thread`: 
 	- We are saying: "My class _[[is a]]_ `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread (violating [[IS-A]] principle)
 	- --> **Inheritance**
-- Implementing `Runnable`: ~~Can extend another class (more flexible)~~
-	- We are saying: "My class has work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object;
+- Implementing `Runnable`:
+	- We are saying: "My class has a work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object ([[HAS-A]]);
 		```java
 		Runnable task = () -> System.out.println("Running in a thread!");
 		Thread thread = new Thread(task);
@@ -84,13 +84,18 @@ Steps:
 #### Inheritance limitation
 - In Java, a class can only extend **one** class.
 	- Extending `Thread` - losing the ability to extend any other class
-	- Implementing `Runnable` - free to extend another class
+	- Implementing `Runnable` - free to extend another class (more flexible)
 #### Lambda expressions (Java 8+)
 - `Runnable` is a **[[functional interface]]** (it has exactly one abstract method: `run()`)
 	- Lambda expressions can be used
-	```java
-	new Thread(() -> System.out.println("Lambda thread")).start();
-	```
+		```java
+		new Thread(() -> System.out.println("Lambda thread")).start();
+		```
+#### Conclusion
+- Generally implementing `Runnable` is **preferred** over `Thread`
+- Use `Thread`:
+	- only when you actually need to customize how the thread itself behaves (for example, overriding `start()` or setting up some thread-specific logic)
+- In short: **Use `Runnable` for the task, `Thread` for execution.**
 
 
 
