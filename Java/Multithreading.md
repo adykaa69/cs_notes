@@ -68,7 +68,7 @@ Steps:
 > `run()`: just a normal method, no new thread is created.
 
 ### Thread vs Runnable
-**Inheritance** vs **Composition**
+#### Inheritance vs Composition
 - Extending `Thread`: ~~Cannot extend another class (must extend `Thread`)~~
 	- We are saying: "My class _[[is a]]_ `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread (violating [[IS-A]] principle)
 	- --> **Inheritance**
@@ -81,7 +81,16 @@ Steps:
 		```
 	- --> **Composition** (the thread object _contains_ the task instead of _being_ the task)
 - --> **Composition** is generally more flexible and loosely coupled than **Inheritance**
-
+#### Inheritance limitation
+- In Java, a class can only extend **one** class.
+	- Extending `Thread` - losing the ability to extend any other class
+	- Implementing `Runnable` - free to extend another class
+#### Lambda expressions (Java 8+)
+- `Runnable` is a **[[functional interface]]** (it has exactly one abstract method: `run()`)
+	- Lambda expressions can be used
+	```java
+	new Thread(() -> System.out.println("Lambda thread")).start();
+	```
 
 
 
