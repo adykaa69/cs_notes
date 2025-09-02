@@ -67,6 +67,13 @@ Steps:
 > `start()`: tells the JVM to create a new OS-level thread, then calls `run()` in that new thread.
 > `run()`: just a normal method, no new thread is created.
 
+### Thread vs Runnable
+- Inheritance:
+	- Extending `Thread`: Cannot extend another class (must extend `Thread`)
+	- Implementing `Runnable`: Can extend another class (more flexible) 
+- 
+
+
 #todo
 Thread vs Runnable
 Thread Management API
