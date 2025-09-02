@@ -19,7 +19,7 @@ Java
 - Annotations
 - Lambda
 - Collections
-- Multithreading
+- Multithreading - **WIP**
 
 REST API
 - Idempotence

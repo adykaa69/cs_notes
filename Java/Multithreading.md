@@ -70,10 +70,10 @@ Steps:
 ### Thread vs Runnable
 #### [[Inheritance vs Composition]]
 - Extending `Thread`: 
-	- We are saying: "My class _[[is a]]_ `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread (violating [[IS-A]] principle)
+	- We are saying: "My class _[[Inheritance vs Composition#Inheritance (IS-A)|is a]]_ `Thread`" - but `MyThread` is not a thread itself, it just contains a task that should run in a thread (violating [[Inheritance vs Composition#Inheritance (IS-A)|IS-A]] principle)
 	- --> **Inheritance**
 - Implementing `Runnable`:
-	- We are saying: "My class _[[has a]]_ work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object ([[HAS-A]] principle);
+	- We are saying: "My class _[[Inheritance vs Composition#Composition (HAS-A)|has a]]_ work that can be executed in a thread." - then we pass that work (the `Runnable`) into a `Thread` object ([[Inheritance vs Composition#Composition (HAS-A)|HAS-A]] principle);
 		```java
 		Runnable task = () -> System.out.println("Running in a thread!");
 		Thread thread = new Thread(task);
@@ -88,7 +88,7 @@ Steps:
 	- Extending `Thread` - losing the ability to extend any other class
 	- Implementing `Runnable` - free to extend another class (more flexible)
 #### Lambda expressions (Java 8+)
-- `Runnable` is a **[[functional interface]]** (it has exactly one abstract method: `run()`)
+- `Runnable` is a **[[functional interface]]** #todo (it has exactly one abstract method: `run()`)
 	- Lambda expressions can be used
 		```java
 		new Thread(() -> System.out.println("Lambda thread")).start();
@@ -103,7 +103,7 @@ Steps:
 
 
 #todo
-Thread vs Runnable
+~~Thread vs Runnable~~
 Thread Management API
 Synchronization
 Inter-Thread Communication
