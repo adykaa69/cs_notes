@@ -179,6 +179,37 @@ Two types:
 	- Child class can redefine a method of its parent class
 
 #### How Polymorphism works in Java
+>[!example]
+> Compile-time Polymorphism
+> ```java
+> public class Calculator {
+> 
+>     // Method 1
+>     public int add(int a, int b) {
+>         return a + b;
+>     }
+> 
+>     // Method 2 (overloaded)
+>     public double add(double a, double b) {
+>         return a + b;
+>     }
+> 
+>     // Method 3 (overloaded)
+>     public int add(int a, int b, int c) {
+>         return a + b + c;
+>     }
+> }
+> 
+> // Usage
+> Calculator calc = new Calculator();
+> 
+> System.out.println(calc.add(2, 3));         // int version → Output: 5
+> System.out.println(calc.add(2.5, 3.1));     // double version → Output: 5.6
+> System.out.println(calc.add(1, 2, 3));      // three-argument version → Output: 6
+> ```
+> The **compiler decides** which `add()` method to call based on the **method signature** (parameter types and count). 
+> There's no dynamic dispatch here.
+
 > [!example]
 > Runtime polymorphism 
 > ```java
@@ -211,36 +242,6 @@ Two types:
 > The method `makeSound()` is overridden.
 > The method called depends on the actual object (Dog), not the reference type (Animal).
 
->[!example]
-> Compile-time Polymorphism
-> ```java
-> public class Calculator {
-> 
->     // Method 1
->     public int add(int a, int b) {
->         return a + b;
->     }
-> 
->     // Method 2 (overloaded)
->     public double add(double a, double b) {
->         return a + b;
->     }
-> 
->     // Method 3 (overloaded)
->     public int add(int a, int b, int c) {
->         return a + b + c;
->     }
-> }
-> 
-> // Usage
-> Calculator calc = new Calculator();
-> 
-> System.out.println(calc.add(2, 3));         // int version → Output: 5
-> System.out.println(calc.add(2.5, 3.1));     // double version → Output: 5.6
-> System.out.println(calc.add(1, 2, 3));      // three-argument version → Output: 6
-> ```
-> The **compiler decides** which `add()` method to call based on the **method signature** (parameter types and count). 
-> There's no dynamic dispatch here.
 #### Benefits of Polymorphism
 - Clean code
 - Easier to extend functionality
