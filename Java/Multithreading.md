@@ -125,7 +125,7 @@ Steps:
 #### `join()`
 - Tells the **calling thread** to wait until another thread finishes execution
 - Optional timeout parameter (`join(long millis)`)
-> [!example] Example - main + single thread
+> [!example] Example 1 - main + single thread
 >```java
 > public class Main {
 >     public static void main(String[] args) throws InterruptedException {
@@ -153,8 +153,8 @@ Steps:
 > `main` is the calling thread, `main` waits until `worker` finishes execution
 - `join()` only affects the **thread that calls it** and the **specific thread it is called on**
 - In case of multiple threads, they can be joined one by one selectively
-> 
-- ```java
+> [!example] Example 2 - main + multiple threads
+>```java
 > public class Main {
 >     public static void main(String[] args) throws InterruptedException {
 >         Thread t1 = new Thread(() -> {
@@ -185,7 +185,31 @@ Steps:
 >     }
 > }
 > ```
+> ```
+> Worker 1 done
+> Worker 3 done
+> Worker 2 done
+> All workers finished. Main continues.
+> ```
+>  `main` is the calling thread, `main` waits until `t1`, `t2`, `t3` finish execution
+> - The order of workers finishing depends on their **sleep times**
+> 	- But `System.out.println("All workers finished. Main continues.")` only happens after all 3 joins complete
+- Threads can also wait for each other
+```java
+Thread t1 = new Thread(() -> {
+    try {
+        t2.join(); // waits for t2
+        System.out.println("t1 continues after t2");
+    } catch (InterruptedException ignored) {}
+});
 
+Thread t2 = new Thread(() -> {
+    try {
+        Thread.sleep(1000);
+        System.out.println("t2 finished work");
+    } catch (InterruptedException ignored) {}
+});
+```
 
 #todo
 Thread Management API
