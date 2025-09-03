@@ -125,7 +125,7 @@ Steps:
 #### `join()`
 - Tells the **calling thread** to wait until another thread finishes execution
 - Optional timeout parameter (`join(long millis)`)
-> [!example]
+> [!example] Example - main + single thread
 >```java
 > public class Main {
 >     public static void main(String[] args) throws InterruptedException {
@@ -145,13 +145,46 @@ Steps:
 >     }
 > }
 > ```
-> ```shell
-> Worker 1 done
-> Worker 3 done
-> Worker 2 done
-> All workers finished. Main continues.
+> ```
+> Waiting for worker to finish...
+> Worker finished work
+> Main thread continues after worker is done
 > ```
 > `main` is the calling thread, `main` waits until `worker` finishes execution
+- `join()` only affects the **thread that calls it** and the **specific thread it is called on**
+- In case of multiple threads, they can be joined one by one selectively
+> 
+- ```java
+> public class Main {
+>     public static void main(String[] args) throws InterruptedException {
+>         Thread t1 = new Thread(() -> {
+>             try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
+>             System.out.println("Worker 1 done");
+>         });
+> 
+>         Thread t2 = new Thread(() -> {
+>             try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+>             System.out.println("Worker 2 done");
+>         });
+> 
+>         Thread t3 = new Thread(() -> {
+>             try { Thread.sleep(1500); } catch (InterruptedException ignored) {}
+>             System.out.println("Worker 3 done");
+>         });
+> 
+>         t1.start();
+>         t2.start();
+>         t3.start();
+> 
+>         // Main waits for all workers
+>         t1.join();
+>         t2.join();
+>         t3.join();
+> 
+>         System.out.println("All workers finished. Main continues.");
+>     }
+> }
+> ```
 
 
 #todo
