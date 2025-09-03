@@ -234,6 +234,10 @@ Steps:
 #### `interrupt()` #todo 
 #### `stop()` #todo
 
+### Synchronization
+Problem: Race Conditions
+- If multiple threads access and modify the **same shared resource** (like a variable, object, or file) **without coordination**, you can get inconsistent results.
+
 
 #todo
 Thread Management API
