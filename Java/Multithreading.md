@@ -304,7 +304,39 @@ Steps:
 > --> **No Race Condition**
 
 #### Synchronized Block
+- Instead of locking the whole method, **lock only the critical section**
+- More control
+> [!example] Example - Synchronizing on `this`
+>```java
+> class Counter {
+>     private int count = 0;
+> 
+>     public void increment() {
+>         synchronized (this) {
+>             count++;
+>         }
+>     }
+> }
+> ```
 
+- Synchronize on a **different object**:
+> [!example] Example - Synchronizing on a separate `lock` object
+> ```java
+> private final Object lock = new Object();
+> 
+> public void increment() {
+>     synchronized (lock) {
+>         count++;
+>     }
+> }
+> ```
+
+Why use a separate lock?
+- **Encapsulation** – external code cannot access `lock`, so no one else can interfere.
+    - If you lock on `this`, _anyone_ with a reference to the Counter could also `synchronized(counter)` in their own code and accidentally block you.
+    - With a private `lock`, only your class can use it.
+- **More control** – you can use different lock objects for different purposes.
+    - Example: one lock for `count`, another lock for some other field → allows more concurrency.
 
 #todo
 ~~Thread Management API~~ (interrupt and stop todo)
