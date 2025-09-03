@@ -104,7 +104,7 @@ Steps:
 - Temporarily pauses the current thread
 - Throws `InterruptedException` if another thread interrupts it while sleeping
 - Useful for simulating delays, scheduling, or waiting without busy-waiting
->[!exampe] 
+>[!example] 
 >```java
 > public class Main {
 >     public static void main(String[] args) {
@@ -121,6 +121,37 @@ Steps:
 >     }
 > }
 > ```
+
+#### `join()`
+- Tells the **calling thread** to wait until another thread finishes execution
+- Optional timeout parameter (`join(long millis)`)
+> [!example]
+>```java
+> public class Main {
+>     public static void main(String[] args) throws InterruptedException {
+>         Thread worker = new Thread(() -> {
+>             try {
+>                 Thread.sleep(1000);
+>                 System.out.println("Worker finished work");
+>             } catch (InterruptedException e) {
+>                 e.printStackTrace();
+>             }
+>         });
+> 
+>         worker.start();
+>         System.out.println("Waiting for worker to finish...");
+>         worker.join(); // main thread waits here
+>         System.out.println("Main thread continues after worker is done");
+>     }
+> }
+> ```
+> ```bash
+> Worker 1 done
+> Worker 3 done
+> Worker 2 done
+> All workers finished. Main continues.
+> ```
+> `main` is the calling thread, `main` waits until `worker` finishes execution
 
 
 #todo
