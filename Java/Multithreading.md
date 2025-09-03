@@ -103,7 +103,6 @@ Steps:
 
 
 #todo
-~~Thread vs Runnable~~
 Thread Management API
 Synchronization
 Inter-Thread Communication
