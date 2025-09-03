@@ -99,7 +99,28 @@ Steps:
 	- only when you actually need to customize how the thread itself behaves (for example, overriding `start()` or setting up some thread-specific logic)
 - In short: **Use `Runnable` for the task, `Thread` for execution.**
 
-
+### Thread Management API
+#### `sleep(milliseconds)`
+- Temporarily pauses the current thread
+- Throws `InterruptedException` if another thread interrupts it while sleeping
+- Useful for simulating delays, scheduling, or waiting without busy-waiting
+>[!exampe] 
+>```java
+> public class Main {
+>     public static void main(String[] args) {
+>         Thread t = new Thread(() -> {
+>             try {
+>                 System.out.println("Working...");
+>                 Thread.sleep(2000); // Sleep for 2 seconds
+>                 System.out.println("Resumed after sleep.");
+>             } catch (InterruptedException e) {
+>                 System.out.println("Thread was interrupted!");
+>             }
+>         });
+>         t.start();
+>     }
+> }
+> ```
 
 
 #todo
@@ -110,3 +131,4 @@ Java Concurrency Utilities
 Volatile vs Synchronized
 Common Problems
 Best Practices
+
