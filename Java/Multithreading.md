@@ -272,7 +272,7 @@ Problem: **Race Conditions**
 > ```
 > Expected: `2000`
 > Possible result: `1734`, `1987`, etc. (depends on timing)
-> --> Race condition because `count++` is **not atomic**
+> --> Race condition, because `count++` is **not atomic**
 >- **not atomic**: the operation consists of multiple separate steps (3)
 >	1. Read the value of count from memory into a CPU register
 >	- `temp = count;`
@@ -283,10 +283,30 @@ Problem: **Race Conditions**
 >	
 >	--> Each of these steps can be interrupted by another thread. 
 
+Solution for Race Condition: **Synchronization**
+- `synchronized` keyword: enforce that only **one thread at a time** can enter a block or method
+> [!example] Example - With Synchronization 
+>```java
+> class Counter {
+>     private int count = 0;
+> 
+>     // synchronized method
+>     public synchronized void increment() {
+>         count++;
+>     }
+> 
+>     public synchronized int getCount() {
+>         return count;
+>     }
+> }
+> ```
+> If two threads call `increment()` at the same time, one must wait until the other finishes
+> --> No Race Condition
+
 
 #todo
-Thread Management API
-Synchronization
+~~Thread Management API~~ (interrupt and stop todo)
+~~Synchronization~~
 Inter-Thread Communication
 Java Concurrency Utilities
 Volatile vs Synchronized
