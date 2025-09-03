@@ -145,7 +145,7 @@ Steps:
 >     }
 > }
 > ```
-> ```bash
+> ```shell
 > Worker 1 done
 > Worker 3 done
 > Worker 2 done
