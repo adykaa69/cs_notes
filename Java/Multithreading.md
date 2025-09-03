@@ -219,6 +219,22 @@ Steps:
 > > [!warning]
 > > It can cause **deadlocks** if two threads wait on each other.
 
+#### `isAlive()`
+- `isAlive()` returns true if a thread has been started and not yet terminated
+> [!example] 
+>```java
+> Thread t = new Thread(() -> {
+>     try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+> });
+> System.out.println(t.isAlive()); // false (not started yet)
+> t.start();
+> System.out.println(t.isAlive()); // true (running or waiting)
+> ```
+
+#### `interrupt()` #todo 
+#### `stop()` #todo
+
+
 #todo
 Thread Management API
 Synchronization
