@@ -237,7 +237,7 @@ Steps:
 ### Synchronization
 Problem: **Race Conditions**
 - If multiple threads access and modify the **same shared resource** (like a variable, object, or file) **without coordination**, you can get inconsistent results.
-> [!example] Example - Without 
+> [!example] Example - Without Synchronization
 > ```java
 > class Counter {
 >     private int count = 0;
@@ -270,6 +270,18 @@ Problem: **Race Conditions**
 >     }
 > }
 > ```
+> Expected: `2000`
+> Possible result: `1734`, `1987`, etc. (depends on timing)
+> --> Race condition because `count++` is **not atomic**
+>- **not atomic**: the operation consists of multiple separate steps (3)
+>	1. Read the value of count from memory into a CPU register
+>	- `temp = count;`
+>	2. Add 1 to the value
+>	- `temp = temp + 1;`
+>	3. Write the result back to memory
+>	- `count = temp;`
+>	
+>	--> Each of these steps can be interrupted by another thread. 
 
 
 #todo
