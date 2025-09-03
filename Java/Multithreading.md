@@ -235,7 +235,7 @@ Steps:
 #### `stop()` #todo
 
 ### Synchronization
-Problem: **Race Conditions**
+##### Problem: **Race Conditions**
 - If multiple threads access and modify the **same shared resource** (like a variable, object, or file) **without coordination**, you can get inconsistent results.
 > [!example] Example - Without Synchronization
 > ```java
@@ -272,7 +272,7 @@ Problem: **Race Conditions**
 > ```
 > Expected: `2000`
 > Possible result: `1734`, `1987`, etc. (depends on timing)
-> --> Race condition, because `count++` is **not atomic**
+> --> **Race condition**, because `count++` is **not atomic**
 >- **not atomic**: the operation consists of multiple separate steps (3)
 >	1. Read the value of count from memory into a CPU register
 >	- `temp = count;`
@@ -283,7 +283,7 @@ Problem: **Race Conditions**
 >	
 >	--> Each of these steps can be interrupted by another thread. 
 
-Solution for Race Condition: **Synchronization**
+#### Solution for Race Condition: **Synchronization**
 - `synchronized` keyword: enforce that only **one thread at a time** can enter a block or method
 > [!example] Example - With Synchronization 
 >```java
@@ -301,7 +301,9 @@ Solution for Race Condition: **Synchronization**
 > }
 > ```
 > If two threads call `increment()` at the same time, one must wait until the other finishes
-> --> No Race Condition
+> --> **No Race Condition**
+
+#### Synchronized Block
 
 
 #todo
