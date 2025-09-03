@@ -235,8 +235,41 @@ Steps:
 #### `stop()` #todo
 
 ### Synchronization
-Problem: Race Conditions
+Problem: **Race Conditions**
 - If multiple threads access and modify the **same shared resource** (like a variable, object, or file) **without coordination**, you can get inconsistent results.
+> [!example] Example - Without 
+> ```java
+> class Counter {
+>     private int count = 0;
+> 
+>     public void increment() {
+>         count++; // not atomic!
+>     }
+> 
+>     public int getCount() {
+>         return count;
+>     }
+> }
+> 
+> public class Main {
+>     public static void main(String[] args) throws InterruptedException {
+>         Counter counter = new Counter();
+> 
+>         // Two threads incrementing the same counter
+>         Thread t1 = new Thread(() -> {
+>             for (int i = 0; i < 1000; i++) counter.increment();
+>         });
+>         Thread t2 = new Thread(() -> {
+>             for (int i = 0; i < 1000; i++) counter.increment();
+>         });
+> 
+>         t1.start(); t2.start();
+>         t1.join(); t2.join();
+> 
+>         System.out.println("Final count: " + counter.getCount());
+>     }
+> }
+> ```
 
 
 #todo
