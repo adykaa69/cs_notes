@@ -18,6 +18,13 @@ Java
 - Default
 - Annotations
 - Lambda
+	- Functional interfaces
+		- Supplier
+		- Consumer
+		- Function
+		- Predicate
+	- Executable
+- Optional<>
 - Collections
 - Multithreading - **WIP**
 
