@@ -266,6 +266,13 @@
 >     }
 > }
 > 
+> public class InMemoryReportRepository implements ReportRepository {
+>     @Override
+>     public void saveReport(String report) {
+> 	    / 
+>     }
+> }
+> 
 > public class ReportService {
 >     private final ReportRepository repository;
 > 
@@ -275,6 +282,17 @@
 > 
 >     public void generateReport() {
 >         repository.saveReport("Generated report");
+>     }
+> }
+> ```
+> ```java
+> public class Main {
+>     public static void main(String[] args) {
+>         // Choose implementation in runtime:
+>         CustomerRepository repo = new DatabaseCustomerRepository();
+>         CustomerService service = new CustomerService(repo);
+> 
+>         service.registerCustomer("John Doe");
 >     }
 > }
 > ```
