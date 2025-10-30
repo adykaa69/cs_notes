@@ -259,20 +259,23 @@
 > public interface ReportRepository {
 >     void saveReport(String report);
 > }
-> 
+>
+> // Implementation 1.
 > public class MySQLReportRepository implements ReportRepository {
 >     public void saveReport(String report) {
 >         // save to MySQL DB
 >     }
 > }
-> 
+>
+> // Implementation 2.
 > public class InMemoryReportRepository implements ReportRepository {
 >     @Override
 >     public void saveReport(String report) {
-> 	    / 
+> 	    // save to memory 
 >     }
 > }
-> 
+>
+> // High-level modul
 > public class ReportService {
 >     private final ReportRepository repository;
 > 
@@ -285,14 +288,21 @@
 >     }
 > }
 > ```
+> Usage
 > ```java
 > public class Main {
 >     public static void main(String[] args) {
->         // Choose implementation in runtime:
->         CustomerRepository repo = new DatabaseCustomerRepository();
->         CustomerService service = new CustomerService(repo);
+>         // Choose which implementation to use
+>         
+>         // MySQL
+>         ReportRepository mysqlRepo = new MySQLReportRepository();
+>         ReportService service = new ReportService(mysqlRepo);
+>         service.generateReport();
 > 
->         service.registerCustomer("John Doe");
+>         // InMemory
+>         ReportRepository inMemoryRepo = new InMemoryReportRepository();
+>         ReportService testService = new ReportService(inMemoryRepo);
+>         testService.generateReport();
 >     }
 > }
 > ```
