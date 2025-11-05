@@ -50,3 +50,24 @@ list.remove(1);
 
 System.out.println(list); // [X, v, a, !]
 ```
+
+# List
+## Create ArrayList
+#### `Arrays.asList()`
+```java
+List<String> list = new ArrayList<>(Arrays.asList("J", "a", "v", "a"));
+```
+#### `List.of()`
+```java
+List<String> list = new ArrayList<>(List.of("J", "a", "v", "a"));
+```
+# Map
+## Create HashMap
+#### `Map.of()`
+```java
+Map<Character, Character> parentheses = new HashMap<>(Map.of(
+    '(', ')',
+    '[', ']',
+    '{', '}'
+));
+```
