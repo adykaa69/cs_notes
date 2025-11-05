@@ -41,4 +41,12 @@ char[] chars = text.toCharArray();
 chars[0] = Character.toUpperCase(chars[0]);
 String modified = new String(chars);
 ```
-#### 
+#### `new ArrayList<>(...)`
+```java
+List<String> list = new ArrayList<>(Arrays.asList("J", "a", "v", "a"));
+list.add("!");    
+list.set(0, "X"); 
+list.remove(1);   
+
+System.out.println(list); // [X, v, a, !]
+```
