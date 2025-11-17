@@ -86,6 +86,7 @@
 
 ## HttpRequest
 [Class HttpRequest](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpRequest.html)
+### Methods
 > [!example]
 > ```java
 > import java.net.http.HttpRequest;
@@ -96,7 +97,7 @@
 >     .GET()  // HTTP method
 >     .build();
 > ```
-### GET
+#### GET
 > [!example]
 > ```java
 > HttpRequest getRequest = HttpRequest.newBuilder()
@@ -106,7 +107,7 @@
 >     .build();
 > ```
 
-### POST
+#### POST
 > [!example]
 > ```java
 > String json = "{\"name\":\"John Doe\"}";
@@ -120,7 +121,7 @@
 > - `POST(BodyPublisher)` sends a body (string, byte array, or file)
 > - `BodyPublishers.ofString(json)` — simplest way for JSON payload
 
-### PUT
+#### PUT
 > [!example]
 > ```java
 > String json = "{\"name\":\"John Doe\"}";
@@ -133,16 +134,44 @@
 > ```
 > - Similar to POST
 
-### PATCH
-- Java `HttpClient` does **not have a built-in PATCH method**
-- Use `method("PATCH", BodyPublisher)`:
-```java
-HttpRequest patchRequest = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.example.com/users/42"))
-    .method("PATCH", HttpRequest.BodyPublishers.ofString("{\"weight\":90}"))
-    .header("Content-Type", "application/json")
-    .build();
-```
+#### PATCH
+> [!example]
+> ```java
+> HttpRequest patchRequest = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users/42"))
+>     .method("PATCH", HttpRequest.BodyPublishers.ofString("{\"weight\":90}"))
+>     .header("Content-Type", "application/json")
+>     .build();
+> ```
+> 
+>> [!info]
+>>- Java `HttpClient` does **not have a built-in PATCH method**
+>> - Use `method("PATCH", BodyPublishers)`
+
+#### DELETE
+> [!example]
+> ```java
+> HttpRequest deleteRequest = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users/42"))
+>     .DELETE() // Usually No Body
+>     .build();
+> ```
+
+### Headers
+> [!info] `header()` vs `headers()`
+> ```java
+> HttpRequest request = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users"))
+>     .header("Content-Type", "application/json")
+>     .header("Authorization", "Bearer token123")
+>     .GET()
+>     .build();
+> ```
+> Use `.header()` to add a single header
+> ```java
+> .headers("Accept", "application/json", "User-Agent", "JavaHttpClient/1.0")
+> ```
+> Use `.headers(String...)` to add multiple in one call
 
 
 
