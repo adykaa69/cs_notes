@@ -202,7 +202,7 @@
 - **String**: `BodyPublishers.ofString("...")`
 - **Byte array**: `BodyPublishers.ofByteArray(byte[])`
 - **File**: `BodyPublishers.ofFile(Path path)`
-	-     `.POST(HttpRequest.BodyPublishers.ofFile(Path.of("file.txt")))`
+	-    ->  `.POST(HttpRequest.BodyPublishers.ofFile(Path.of("file.txt")))`
 
 
 
