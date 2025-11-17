@@ -5,9 +5,9 @@
 	- easier to work with
 	- supporting synchronous and asynchronous calls
 
-## Basic Classes
-- **HttpClient**: the main client object used to send HTTP requests.
-- **HttpRequest**: represents the request (method, URI, headers, body).
+# Basic Classes
+- **[[#HttpClient]]**: the main client object used to send HTTP requests.
+- **[[#HttpRequest]]**: represents the request (method, URI, headers, body).
 - **HttpResponse**: represents the response (status code, headers, body).
 	- **BodyHandlers**: specify how to handle the response body (as string, byte array, file, etc.).
 
@@ -175,7 +175,15 @@
 
 #### Accept vs Content-Type
 - Accept: Response format I can understand
-- Content-Type: Respons
+	- ```java
+	  .header("Accept", "application/json")
+	  // I want JSON in response 
+	  ```
+- Content-Type: Request format I'm sending
+	- ```java
+	  .header("Content-Type", "application/json")
+	  // I am sending JSON in body
+	  ```
 
 ### Timeout Per Request
 > [!info]
