@@ -11,8 +11,27 @@
 	- **BodyHandlers**: specify how to handle the response body (as string, byte array, file, etc.).
 
 ## HttpClient
-```java
-import java.net.http.HttpClient;
+> [!example]
+> Basic HttpClient
+> ```java
+> import java.net.http.HttpClient;
+> 
+> HttpClient client = HttpClient.newHttpClient();
+> ```
+> Optional configuration
+> ```java
+> HttpClient client = HttpClient.newBuilder()
+>     .version(HttpClient.Version.HTTP_2)
+>     .followRedirects(HttpClient.Redirect.NORMAL)
+>     .connectTimeout(Duration.ofSeconds(10))
+>     .proxy(ProxySelector.of(new InetSocketAddress("proxy.example.com", 8080)))
+>     .authenticator(Authenticator.getDefault())
+>     .build();
+> ```
 
-HttpClient client = HttpClient.newHttpClient();
-```
+- Version
+	- `.version(HttpClient.Version.HTTP_2)`
+	- Specifies the **HTTP protocol version** to use. Options:
+		- - `HTTP_1_1` — older, widely supported
+		- `HTTP_2` — newer, allows multiplexing multiple requests over one connection (faster)
+
