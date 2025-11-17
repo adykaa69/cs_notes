@@ -14,10 +14,21 @@
 
 # HTTP Methods
 - In HTTP, there are five methods that are commonly used in a REST-based architecture:
-	- GET
+	- [[#GET]]
 	- POST
 	- PUT
 	- PATCH
 	- DELETE
 ## GET
 - The HTTP GET method is used to **read** (or retrieve) a representation of a resource.
+	- Safe path: returns a representation in XML or JSON and #todo **200** (OK).
+	- Error case: returns **404** (NOT FOUND) or **400** (BAD REQUEST)
+
+> [!example]
+> ```bash
+> GET  /api/v1/users/123
+> ```
+> - This request fetches data for the user with ID 123.
+
+## POST
+- The HTTP POST
