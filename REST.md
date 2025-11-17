@@ -21,8 +21,8 @@
 	- DELETE
 ## GET
 - The HTTP GET method is used to **read** (or retrieve) a representation of a resource.
-	- Safe path: returns a representation in XML or JSON and #todo **200** (OK).
-	- Error case: returns **404** (NOT FOUND) or **400** (BAD REQUEST)
+	- Success: returns a representation in XML or JSON and #todo **200** (Ok).
+	- Error: returns **404** (Not Found) or **400** (Bad Request)
 
 > [!example]
 > ```bash
@@ -31,4 +31,6 @@
 > - This request fetches data for the user with ID 123.
 
 ## POST
-- The HTTP POST
+- The HTTP POST method is commonly used to create new resources.
+- It is often used to create subordinate resources related to a parent resource.
+	- Success: returns 201 (Created) 
