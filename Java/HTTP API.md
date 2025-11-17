@@ -158,7 +158,7 @@
 > ```
 
 ### Headers
-> [!info] `header()` vs `headers()`
+> [!info] 
 > ```java
 > HttpRequest request = HttpRequest.newBuilder()
 >     .uri(URI.create("https://api.example.com/users"))
@@ -172,6 +172,18 @@
 > .headers("Accept", "application/json", "User-Agent", "JavaHttpClient/1.0")
 > ```
 > Use `.headers(String...)` to add multiple in one call
+
+### Timeout Per Request
+```java
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.example.com/users"))
+    .timeout(Duration.ofSeconds(5)) // request timeout
+    .GET()
+    .build();
+```
+- Overrides the `HttpClient` global timeout (if set)   
+- If exceeded → `HttpTimeoutException` is thrown
+
 
 
 
