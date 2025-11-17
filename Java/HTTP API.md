@@ -1,4 +1,5 @@
-- `java.net.http API was introduced in Java 11
+[Baeldung - Exploring the New HTTP Client in Java](https://www.baeldung.com/java-9-http-client)
+- `java.net.http.HttpClient` API was introduced in Java 11
 - Replaced the old `HttpURLConnection`
 -  `HttpClient` > `HttpURLConnection`
 	- easier to work with
@@ -11,7 +12,7 @@
 	- **BodyHandlers**: specify how to handle the response body (as string, byte array, file, etc.).
 
 ## HttpClient
-- [Class HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
+[Class HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
 > [!example]
 > **Basic HttpClient**
 > ```java
@@ -67,17 +68,22 @@
 >> [!example]- **Authenticator**
 >> - `.authenticator(Authenticator.getDefault())`
 >> - Sets **credentials for authentication** (Basic, Digest, or NTLM) if the server requires it.
+>> - Can also create a **custom** `Authenticator`
 >>> [!info] Custom Authenticator
->>> ```
+>>> ```java
 >>> Authenticator auth = new Authenticator() {
 >>>     @Override
->     protected PasswordAuthentication getPasswordAuthentication() {
->         return new PasswordAuthentication("username", "password".toCharArray());
->     }
-> };
-> 
-> HttpClient client = HttpClient.newBuilder()
->     .authenticator(auth)
->     .build();
+>>>     protected PasswordAuthentication getPasswordAuthentication() {
+>>>         return new PasswordAuthentication("username","password".toCharArray());
+>>>     }
+>>> };
+>>> 
+>>> HttpClient client = HttpClient.newBuilder()
+>>>     .authenticator(auth)
+>>>     .build();
 >>> ```
+>>> The client will automatically send credentials **when challenged by the server**.
+
+## HttpRequest
+
 
