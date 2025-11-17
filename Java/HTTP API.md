@@ -174,16 +174,35 @@
 > Use `.headers(String...)` to add multiple in one call
 
 ### Timeout Per Request
-```java
-HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.example.com/users"))
-    .timeout(Duration.ofSeconds(5)) // request timeout
-    .GET()
-    .build();
-```
-- Overrides the `HttpClient` global timeout (if set)   
-- If exceeded → `HttpTimeoutException` is thrown
+> [!info]
+> ```java
+> HttpRequest request = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users"))
+>     .timeout(Duration.ofSeconds(5)) // request timeout
+>     .GET()
+>     .build();
+> ```
+> - Overrides the `HttpClient` global timeout (if set)   
+> - If exceeded → `HttpTimeoutException` is thrown
 
+### HTTP Version Override
+> [!info]
+> ```java
+> HttpRequest request = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users"))
+>     .version(HttpClient.Version.HTTP_2)
+>     .GET()
+>     .build();
+> ```
+> - If omitted, uses client default (`HTTP_2` or `HTTP_1_1`)
+> - Useful if you want to test HTTP/1.1 explicitly
+
+### Body Publishers
+- **No body**: `.GET()` or `.noBody()`
+- **String**: `BodyPublishers.ofString("...")`
+- **Byte array**: `BodyPublishers.ofByteArray(byte[])`
+- **File**: `BodyPublishers.ofFile(Path path)`
+	-     `.POST(HttpRequest.BodyPublishers.ofFile(Path.of("file.txt")))`
 
 
 
