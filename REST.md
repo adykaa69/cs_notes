@@ -59,7 +59,7 @@
 > Response:
 > ```bash
 > HTTP/1.1 201 Created
-> Location: https://api.example.com/api/v1/customers/124
+> Location: https://api.example.com/api/v1/users/124
 > Content-Type: application/json
 > 
 > {
@@ -81,7 +81,7 @@
 > [!example]
 > Request:
 > ```bash
-> PUT /api/v1/customers/124
+> PUT /api/v1/users/124
 > Content-Type: application/json
 > 
 > {
@@ -103,7 +103,7 @@
 > Response II. - Resource did NOT exist -> PUT can create it -> Returns 201 Created
 > ```bash
 > HTTP/1.1 201 Created
-> Location: https://api.example.com/api/v1/customers/124
+> Location: https://api.example.com/api/v1/users/124
 > Content-Type: application/json
 > 
 > {
@@ -127,3 +127,43 @@
 - Unlike PUT, PATCH only requires the fields that need to be updated to be sent in the request body. 
 - It modifies specific parts of the resource rather than replacing the entire resource.
 
+> [!example]
+> Request:
+> ```bash
+> PATCH /api/v1/users/124
+> Content-Type: application/json
+> 
+> {
+>   "name": "Dark Lord"
+> }
+> ```
+> Response:
+> ```bash
+> HTTP/1.1 200 OK
+> Content-Type: application/json
+> 
+> {
+>   "id": 124,
+>   "name": "Dark Lord",
+>   "email": "lord.voldemort@azkaban.com"
+> }
+> ```
+
+## DELETE
+- HTTP DELETE method is used to ****delete**** a resource identified by a URI.
+- On successful deletion, return HTTP status 200 (OK) along with a response body.
+
+> [!example]
+> Request:
+> ```bash
+> DELETE /api/v1/users/124
+> ```
+> Response:
+> ```bash
+> HTTP/1.1 200 OK
+> Content-Type: application/json
+> 
+> {
+>   "message": "User with ID 124 deleted successfully."
+> }
+> ```
