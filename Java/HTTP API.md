@@ -86,6 +86,36 @@
 
 ## HttpRequest
 [Class HttpRequest](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpRequest.html)
+> [!example]
+> ```java
+> import java.net.http.HttpRequest;
+> import java.net.URI;
+> 
+> HttpRequest request = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users"))
+>     .GET()  // HTTP method
+>     .build();
+> ```
+### GET
+> [!example]
+> ```java
+> HttpRequest getRequest = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users/42"))
+>     .GET() // No Body allowed
+>     .header("Accept", "application/json")
+>     .build();
+> ```
+
+### POST
+```java
+String json = "{\"name\":\"John Doe\"}";
+
+HttpRequest postRequest = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.example.com/users"))
+    .POST(HttpRequest.BodyPublishers.ofString(json))
+    .header("Content-Type", "application/json")
+    .build();
+```
 
 
 
