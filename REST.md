@@ -13,13 +13,14 @@
 > - **HTTP**: communication protocol
 
 # HTTP Methods
+## Type of Methods
 - In HTTP, there are five methods that are commonly used in a REST-based architecture:
 	- [[#GET]]
-	- POST
-	- PUT
-	- PATCH
-	- DELETE
-## GET
+	- [[#POST]]
+	- [[#PUT]]
+	- [[#PATCH]]
+	- [[#DELETE]]
+### GET
 - The HTTP GET method is used to **read** (or retrieve) a representation of a resource.
 	- Success: returns a representation in XML or JSON and #todo **200** (OK).
 	- Error: returns **404** (Not Found) or **400** (Bad Request)
@@ -39,7 +40,7 @@
 > ```
 > - This request fetches data for the user with ID 123.
 
-## POST
+### POST
 - The HTTP POST method is commonly used to create new resources.
 - It is often used to create subordinate resources related to a parent resource.
 	- Success: returns Location header and **201** (Created)
@@ -69,7 +70,7 @@
 > }
 > ```
 
-## PUT
+### PUT
 - HTTP PUT method is used to update a resource on the server.
 - When using PUT, the entire resource is sent in the request body, and it replaces the current resource at the specified URL.
 	- Returns 200 (OK)
@@ -122,7 +123,7 @@
 > }
 > ```
 
-## PATCH
+### PATCH
 - HTTP PATCH method is used to partially update a resource on the server.
 - Unlike PUT, PATCH only requires the fields that need to be updated to be sent in the request body. 
 - It modifies specific parts of the resource rather than replacing the entire resource.
@@ -149,7 +150,7 @@
 > }
 > ```
 
-## DELETE
+### DELETE
 - HTTP DELETE method is used to ****delete**** a resource identified by a URI.
 - On successful deletion, return HTTP status 200 (OK) along with a response body.
 
@@ -167,3 +168,7 @@
 >   "message": "User with ID 124 deleted successfully."
 > }
 > ```
+
+## Idempotency
+
+# Status Codes
