@@ -34,7 +34,7 @@
 > 200 OK
 > {
 >   "id": 123,
->   "name": "Harry"
+>   "name": "Harry Potter"
 > }
 > ```
 > - This request fetches data for the user with ID 123.
@@ -43,6 +43,7 @@
 - The HTTP POST method is commonly used to create new resources.
 - It is often used to create subordinate resources related to a parent resource.
 	- Success: returns Location header and **201** (Created)
+		- Location Header: URL of the recently created resource
 
 > [!example]
 > Request:
@@ -51,7 +52,33 @@
 > Content-Type: application/json
 > 
 > {
->   "name": "Voldemort"
+>   "name": "Tom Riddle"
+> }
+> ```
+> Response:
+> ```bash
+> HTTP/1.1 201 Created
+> Location: https://api.example.com/api/v1/customers/124
+> Content-Type: application/json
+> 
+> {
+>   "id": 124,
+>   "name": "Tom Riddle"
 > }
 > ```
 
+## PUT
+- HTTP PUT method is used to update a resource on the server.
+- When using PUT, the entire resource is sent in the request body, and it replaces the current resource at the specified URL.
+- If the resource doesn’t exist, it can create a new one.
+
+[!example]
+Request:
+```bash
+PUT /api/patients/124
+Content-Type: application/json
+
+{
+  "name": "Lord Voldemor"
+}
+```
