@@ -50,16 +50,34 @@
 >> - Sets the **maximum time the client will wait** to establish a connection.
 >> - Avoids hanging requests.
 >
->> []- **Proxy Settings**
->> 	- `.proxy(ProxySelector.of(new InetSocketAddress("proxy.example.com", 8080)))`
->> 	- Sets a **proxy server** for your HTTP requests.
->> 		- Useful in corporate networks, VPNs, or for logging requests.
->> 	- `ProxySelector.of()` takes an `InetSocketAddress`.
->> 		- Can also use `ProxySelector.getDefault()` to use system proxy.
->> 		```java
->> 		HttpClient client = HttpClient.newBuilder()
->> 		    .proxy(ProxySelector.of(new InetSocketAddress("127.0.0.1", 8888)))
->> 		    .build();
->> 		```
->> 		This sends all requests through a local proxy
+>> [!example]- **Proxy Settings**
+>> - `.proxy(ProxySelector.of(new InetSocketAddress("proxy.example.com", 8080)))`
+>> - Sets a **proxy server** for your HTTP requests.
+>> 	- Useful in corporate networks, VPNs, or for logging requests.
+>> - `ProxySelector.of()` takes an `InetSocketAddress`.
+>> 	- Can also use `ProxySelector.getDefault()` to use system proxy.
+>>> [!info] Local Proxy 
+>>> ```java
+>>> HttpClient client = HttpClient.newBuilder()
+>>>     .proxy(ProxySelector.of(new InetSocketAddress("127.0.0.1", 8888)))
+>>>     .build();
+>>> ```
+>>> This sends all requests through a local proxy
+>
+>> [!example]- **Authenticator**
+>> - `.authenticator(Authenticator.getDefault())`
+>> - Sets **credentials for authentication** (Basic, Digest, or NTLM) if the server requires it.
+>>> [!info] Custom Authenticator
+>>> ```
+>>> Authenticator auth = new Authenticator() {
+>>>     @Override
+>     protected PasswordAuthentication getPasswordAuthentication() {
+>         return new PasswordAuthentication("username", "password".toCharArray());
+>     }
+> };
+> 
+> HttpClient client = HttpClient.newBuilder()
+>     .authenticator(auth)
+>     .build();
+>>> ```
 
