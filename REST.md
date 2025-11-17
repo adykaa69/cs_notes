@@ -25,12 +25,33 @@
 	- Error: returns **404** (Not Found) or **400** (Bad Request)
 
 > [!example]
+> Request:
 > ```bash
 > GET  /api/v1/users/123
+> ```
+> Response:
+> ```bash
+> 200 OK
+> {
+>   "id": 123,
+>   "name": "Harry"
+> }
 > ```
 > - This request fetches data for the user with ID 123.
 
 ## POST
 - The HTTP POST method is commonly used to create new resources.
 - It is often used to create subordinate resources related to a parent resource.
-	- Success: returns 201 (Created) 
+	- Success: returns Location header and **201** (Created)
+
+> [!example]
+> Request:
+> ```bash
+> POST /api/v1/users
+> Content-Type: application/json
+> 
+> {
+>   "name": "Voldemort"
+> }
+> ```
+
