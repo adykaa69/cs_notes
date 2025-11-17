@@ -173,6 +173,10 @@
 > ```
 > Use `.headers(String...)` to add multiple in one call
 
+#### Accept vs Content-Type
+- Accept: Response format I can understand
+- Content-Type: Respons
+
 ### Timeout Per Request
 > [!info]
 > ```java
@@ -203,6 +207,24 @@
 - **Byte array**: `BodyPublishers.ofByteArray(byte[])`
 - **File**: `BodyPublishers.ofFile(Path path)`
 	-    ->  `.POST(HttpRequest.BodyPublishers.ofFile(Path.of("file.txt")))`
+
+### URI
+> [!info]
+> ```java
+> URI uri = URI.create("https://api.example.com/users");
+> ```
+> - Simple, literal URIs, no checked exceptions
+> 
+> ```java
+> try {
+>     URI uri = new URI("https", "api.example.com", "/users", null);
+> } catch (URISyntaxException e) {
+>     e.printStackTrace();
+> }
+> ```
+> - Needs try-catch
+> - More flexible, safer if you expect invalid input or need to construct from parts
+
 
 
 
