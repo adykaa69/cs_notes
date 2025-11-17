@@ -73,29 +73,57 @@
 - HTTP PUT method is used to update a resource on the server.
 - When using PUT, the entire resource is sent in the request body, and it replaces the current resource at the specified URL.
 	- Returns 200 (OK)
-- If the resource doesn’t exist, it can create a new one. 
+- If the resource doesn’t exist, and it **can** create a new one
 	- Returns 201 (Created)
+- If the resource doesn't exist, and it **cannot** create a new one
+	- Returns 404 (Not Found)
 
-[!example]
-Request:
-```bash
-PUT /api/v1/customers/124
-Content-Type: application/json
+> [!example]
+> Request:
+> ```bash
+> PUT /api/v1/customers/124
+> Content-Type: application/json
+> 
+> {
+>   "name": "Lord Voldemort",
+>   "email": "lord.voldemort@azkaban.com"
+> }
+> ```
+> Response I. - Resource already exists -> Returns 200 OK
+> ```bash
+> HTTP/1.1 200 OK
+> Content-Type: application/json
+> 
+> {
+>   "id": 124,
+>   "name": "Lord Voldemort",
+>   "email": "lord.voldemort@azkaban.com"
+> }
+> ```
+> Response II. - Resource did NOT exist -> PUT can create it -> Returns 201 Created
+> ```bash
+> HTTP/1.1 201 Created
+> Location: https://api.example.com/api/v1/customers/124
+> Content-Type: application/json
+> 
+> {
+>   "id": 124,
+>   "name": "Lord Voldemort",
+>   "email": "lord.voldemort@azkaban.com"
+> }
+> ```
+> Response III. - Resource did NOT exist -> Returns 404 Not Found
+> ```bash
+> HTTP/1.1 404 Not Found
+> Content-Type: application/json
+> 
+> {
+>   "error": "User with ID 124 not found."
+> }
+> ```
 
-{
-  "name": "Lord Voldemort",
-  "email": "lord.voldemort@azkaban.com"
-}
-```
-Response I. - Resource already exists -> Returns 200 OK
-```bash
-HTTP/1.1 200 OK
-Content-Type: application/json
+## PATCH
+- HTTP PATCH method is used to partially update a resource on the server.
+- Unlike PUT, PATCH only requires the fields that need to be updated to be sent in the request body. 
+- It modifies specific parts of the resource rather than replacing the entire resource.
 
-{
-  "id": 124,
-  "name": "Lord Voldemort",
-  "email": "lord.voldemort@azkaban.com"
-}
-```
-Response II. - Resource did NOT exist -> PUT can create it -> Returns 201 Created
