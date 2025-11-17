@@ -244,52 +244,57 @@
 
 # Sending a Request
 ## Synchronous Request
-```java
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.Duration;
-
-public class HttpExample {
-    public static void main(String[] args) {
-        try {
-            // 1. Create the client
-            HttpClient client = HttpClient.newHttpClient();
-
-            // 2. Create the request
-            HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://jsonplaceholder.typicode.com/users/1"))
-                .timeout(Duration.ofSeconds(10))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
-
-            // 3. Send the request synchronously
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            // 4. Print the response details
-            System.out.println("Status code: " + response.statusCode());
-            System.out.println("Headers: " + response.headers().map());
-            System.out.println("Body: " + response.body());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
+> [!example]
+> ```java
+> import java.net.URI;
+> import java.net.http.HttpClient;
+> import java.net.http.HttpRequest;
+> import java.net.http.HttpResponse;
+> import java.time.Duration;
+> 
+> public class HttpExample {
+>     public static void main(String[] args) {
+>         try {
+>             // 1. Create the client
+>             HttpClient client = HttpClient.newHttpClient();
+> 
+>             // 2. Create the request
+>             HttpRequest request = HttpRequest.newBuilder()
+>                 .uri(URI.create("https://jsonplaceholder.typicode.com/users/1"))
+>                 .timeout(Duration.ofSeconds(10))
+>                 .header("Accept", "application/json")
+>                 .GET()
+>                 .build();
+> 
+>             // 3. Send the request synchronously
+>             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+> 
+>             // 4. Print the response details
+>             System.out.println("Status code: " + response.statusCode());
+>             System.out.println("Headers: " + response.headers().map());
+>             System.out.println("Body: " + response.body());
+> 
+>         } catch (Exception e) {
+>             e.printStackTrace();
+>         }
+>     }
+> }
+> ```
 ## Asynchronous Request
-- Request can be send non-blocking:
-```java
-client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-      .thenApply(HttpResponse::body)
-      .thenAccept(System.out::println)
-      .join();  // Wait for completion
-```
-- `sendAsync` returns a `CompletableFuture<HttpResponse<T>>`
-- Non-blocking → your program can continue doing other things while waiting
-- `.join()` waits for the response (optional)
+- Request can be send **non-blocking**:
 
+> [!example]
+> ```java
+> client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+>       .thenApply(HttpResponse::body)
+>       .thenAccept(System.out::println)
+>       .join();  // Wait for completion
+> ```
+> - `sendAsync` returns a `CompletableFuture<HttpResponse<T>>`
+> - Non-blocking → your program can continue doing other things while waiting
+> - `.join()` waits for the response (optional)
+
+# JSON Parsing
+# Pagination, search(?)
 
 
