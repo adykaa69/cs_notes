@@ -233,6 +233,13 @@
 > - Needs try-catch
 > - More flexible, safer if you expect invalid input or need to construct from parts
 
+## HttpResponse
+- `HttpResponse<T>` contains several key parts:
+	- `statusCode()` - returns HTTP status code
+	- `headers(`) - returns an **HttpHeaders** object containing all response headers
+	- `body() `- returns body of response, tpye depends on BodyHandler (String, byte[], file)
+	- `version()` - returns HTTP version used (HTTP/1.1 or HTTP/2)
+	- `uri()` - returns the URI of the request that produced this response
 
 
 
