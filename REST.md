@@ -1,0 +1,2 @@
+# What is REST?
+- REST (Representational State Transfer) is an architectural style for designing networked applications.
