@@ -107,17 +107,42 @@
 > ```
 
 ### POST
-```java
-String json = "{\"name\":\"John Doe\"}";
+> [!example]
+> ```java
+> String json = "{\"name\":\"John Doe\"}";
+> 
+> HttpRequest postRequest = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users"))
+>     .POST(HttpRequest.BodyPublishers.ofString(json))
+>     .header("Content-Type", "application/json")
+>     .build();
+> ```
+> - `POST(BodyPublisher)` sends a body (string, byte array, or file)
+> - `BodyPublishers.ofString(json)` — simplest way for JSON payload
 
-HttpRequest postRequest = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.example.com/users"))
-    .POST(HttpRequest.BodyPublishers.ofString(json))
+### PUT
+> [!example]
+> ```java
+> String json = "{\"name\":\"John Doe\"}";
+> 
+> HttpRequest putRequest = HttpRequest.newBuilder()
+>     .uri(URI.create("https://api.example.com/users/42"))
+>     .PUT(HttpRequest.BodyPublishers.ofString(json))
+>     .header("Content-Type", "application/json")
+>     .build();
+> ```
+> - Similar to POST
+
+### PATCH
+- Java `HttpClient` does **not have a built-in PATCH method**
+- Use `method("PATCH", BodyPublisher)`:
+```java
+HttpRequest patchRequest = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.example.com/users/42"))
+    .method("PATCH", HttpRequest.BodyPublishers.ofString("{\"weight\":90}"))
     .header("Content-Type", "application/json")
     .build();
 ```
-
-
 
 
 
