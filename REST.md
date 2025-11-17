@@ -21,7 +21,7 @@
 	- DELETE
 ## GET
 - The HTTP GET method is used to **read** (or retrieve) a representation of a resource.
-	- Success: returns a representation in XML or JSON and #todo **200** (Ok).
+	- Success: returns a representation in XML or JSON and #todo **200** (OK).
 	- Error: returns **404** (Not Found) or **400** (Bad Request)
 
 > [!example]
@@ -53,6 +53,7 @@
 > 
 > {
 >   "name": "Tom Riddle"
+>   "email": "tom.riddle@hogwarts.com"
 > }
 > ```
 > Response:
@@ -64,21 +65,37 @@
 > {
 >   "id": 124,
 >   "name": "Tom Riddle"
+>   "email": "tom.riddle@hogwarts.com"
 > }
 > ```
 
 ## PUT
 - HTTP PUT method is used to update a resource on the server.
 - When using PUT, the entire resource is sent in the request body, and it replaces the current resource at the specified URL.
-- If the resource doesn’t exist, it can create a new one.
+	- Returns 200 (OK)
+- If the resource doesn’t exist, it can create a new one. 
+	- Returns 201 (Created)
 
 [!example]
 Request:
 ```bash
-PUT /api/patients/124
+PUT /api/v1/customers/124
 Content-Type: application/json
 
 {
-  "name": "Lord Voldemor"
+  "name": "Lord Voldemort",
+  "email": "lord.voldemort@azkaban.com"
 }
 ```
+Response I. - Resource already exists -> Returns 200 OK
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 124,
+  "name": "Lord Voldemort",
+  "email": "lord.voldemort@azkaban.com"
+}
+```
+Response II. - Resource did NOT exist -> PUT can create it -> Returns 201 Created
