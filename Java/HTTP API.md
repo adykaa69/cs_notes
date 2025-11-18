@@ -537,3 +537,81 @@ for (JsonNode user : users) {
 
 
 # Pagination, search(?)
+- APIs often return data in **chunks (pages)** instead of all at once, for efficiency.
+
+> [!example]
+> ```json
+> {
+>   "page": 1,
+>   "per_page": 2,
+>   "total": 6,
+>   "total_pages": 3,
+>   "data": [
+>     {"id":1,"name":"Alice"},
+>     {"id":2,"name":"Bob"}
+>   ]
+> }
+> ```
+> - `page` - current page number
+> - `per_page` - number of results per page
+> - `total` - total number of records
+> - `total_pages` -  how many pages in total
+> - `data` - array of items
+
+## Pagination Handling
+You **loop through all pages**, sending a GET request for each page and collecting results.
+
+**Step-by-Step**
+1. **Send the first request** to get `total_pages`.
+2. **Loop from 1 to total_pages**, sending requests for each page.
+3. **Parse the response body** (JSON) and extract `data`.
+4. **Process each item**.
+
+> [!example]
+> Paginated GET with HttpClient + Gson
+> ```java
+> import java.net.URI;
+> import java.net.http.*;
+> import com.google.gson.*;
+> 
+> public class PaginationExample {
+>     private static final String BASE_URL = "https://jsonmock.hackerrank.com/api/medical_records?page=";
+> 
+>     public static void main(String[] args) throws Exception {
+>         HttpClient client = HttpClient.newHttpClient();
+> 
+>         // Step 1: Get first page to know total_pages
+>         HttpRequest firstRequest = HttpRequest.newBuilder()
+>                 .uri(URI.create(BASE_URL + "1"))
+>                 .GET()
+>                 .build();
+> 
+>         HttpResponse<String> firstResponse = client.send(firstRequest, HttpResponse.BodyHandlers.ofString());
+> 
+>         JsonObject firstJson = JsonParser.parseString(firstResponse.body()).getAsJsonObject();
+>         int totalPages = firstJson.get("total_pages").getAsInt();
+> 
+>         System.out.println("Total pages: " + totalPages);
+> 
+>         // Step 2: Loop through all pages
+>         for (int page = 1; page <= totalPages; page++) {
+>             HttpRequest request = HttpRequest.newBuilder()
+>                     .uri(URI.create(BASE_URL + page))
+>                     .GET()
+>                     .build();
+> 
+>             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+>             JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+>             JsonArray data = json.getAsJsonArray("data");
+> 
+>             // Step 3: Iterate over items
+>             for (JsonElement element : data) {
+>                 JsonObject record = element.getAsJsonObject();
+>                 String name = record.get("userName").getAsString();
+>                 System.out.println("User: " + name);
+>             }
+>         }
+>     }
+> }
+> 
+> ```
