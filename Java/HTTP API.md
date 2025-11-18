@@ -334,7 +334,44 @@
 > ```
 
 ### Parse nested JSON
+> [!example]
+> ```json
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "address": {
+>     "street": "Kulas Light",
+>     "city": "Gwenborough"
+>   }
+> }
+> ```
+> ```java
+> String responseBody = """
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "address": {
+>     "street": "Kulas Light",
+>     "city": "Gwenborough",
+>   }
+> }
+> """;
+> 
+> // Parse JSON string
+> JsonElement element = JsonParser.parseString(responseBody);
+> JsonObject root = element.getAsJsonObject();
+> 
+> // Top-level field
+> String name = root.get("name").getAsString();
+> 
+> // Nested object
+> JsonObject address = root.getAsJsonObject("address");
+> 
+> String street = address.get("street").getAsString();
+> String city = address.get("city").getAsString();
+> ```
 
+### 
 
 # Pagination, search(?)
 
