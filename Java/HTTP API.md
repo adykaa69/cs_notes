@@ -301,6 +301,14 @@
 
 ### Parsing JSON String
 > [!example]
+> ```json
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "username": "Bret",
+>   "email": "Sincere@april.biz"
+> }
+> ```
 > ```java
 > import com.google.gson.JsonObject;
 > import com.google.gson.JsonElement;
@@ -323,14 +331,6 @@
 > // Access fields
 > String name = obj.get("name").getAsString();
 > String email = obj.get("email").getAsString();
-> 
-> System.out.println("Name: " + name);
-> System.out.println("Email: " + email);
-> ```
-> ```
-> Output:
-> Name: Leanne Graham
-> Email: Sincere@april.biz
 > ```
 
 ### Parsing nested JSON
@@ -411,5 +411,101 @@
 ## Jackson
 - FasterXML Jackson library
 
+### Parsing JSON String
+> [!example]
+> ```json
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "username": "Bret",
+>   "email": "Sincere@april.biz"
+> }
+> ```
+> ```java
+> import com.fasterxml.jackson.databind.JsonNode;
+> import com.fasterxml.jackson.databind.ObjectMapper;
+> 
+> String responseBody = """
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "username": "Bret",
+>   "email": "Sincere@april.biz"
+> }
+> """;
+> 
+> ObjectMapper mapper = new ObjectMapper();
+> JsonNode root = mapper.readTree(responseBody);
+> 
+> String name = root.get("name").asText();
+> String email = root.get("email").asText();
+> 
+> System.out.println("Name: " + name);
+> System.out.println("Email: " + email);
+> ```
 
+### Parsing Nested JSON
+> [!exmple]
+> ```json
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "address": {
+>     "street": "Kulas Light",
+>     "city": "Gwenborough"
+>   }
+> }
+> ```
+> ```java
+> String responseBody = """
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "address": {
+>     "street": "Kulas Light",
+>     "city": "Gwenborough"
+>   }
+> }
+> """;
+> 
+> ObjectMapper mapper = new ObjectMapper();
+> JsonNode root = mapper.readTree(responseBody);
+> 
+> String name = root.get("name").asText();
+> JsonNode address = root.get("address");
+> 
+> String street = address.get("street").asText();
+> String city = address.get("city").asText();
+> ```
+
+### Parsing Arrays
+[!example]
+```json
+{
+  "users": [
+    {"name": "Alice", "email": "alice@example.com"},
+    {"name": "Bob", "email": "bob@example.com"}
+  ]
+}
+```
+```java
+String responseBody = """
+{
+  "users": [
+    {"name": "Alice", "email": "alice@example.com"},
+    {"name": "Bob", "email": "bob@example.com"}
+  ]
+}
+""";
+
+ObjectMapper mapper = new ObjectMapper();
+JsonNode root = mapper.readTree(responseBody);
+JsonNode users = root.get("users");
+
+for (JsonNode user : users) {
+    String name = user.get("name").asText();
+    String email = user.get("email").asText();
+    System.out.println("Name: " + name + ", Email: " + email);
+}
+```
 # Pagination, search(?)
