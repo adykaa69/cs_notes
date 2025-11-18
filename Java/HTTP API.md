@@ -9,7 +9,7 @@
 # Basic Classes
 - **[[#HttpClient]]**: the main client object used to send HTTP requests.
 - **[[#HttpRequest]]**: represents the request (method, URI, headers, body).
-- **HttpResponse**: represents the response (status code, headers, body).
+- **[[#HttpResponse]]**: represents the response (status code, headers, body).
 	- **BodyHandlers**: specify how to handle the response body (as string, byte array, file, etc.).
 
 ## HttpClient
@@ -235,6 +235,7 @@
 > - More flexible, safer if you expect invalid input or need to construct from parts
 
 ## HttpResponse
+[Interface HttpResponse\<T>](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.html)
 - `HttpResponse<T>` contains several key parts:
 	- `statusCode()` - returns HTTP status code
 	- `headers(`) - returns an **HttpHeaders** object containing all response headers
@@ -536,7 +537,7 @@ for (JsonNode user : users) {
 - Jackson is generally **faster** than Gson for large JSON structures.
 
 
-# Pagination, search(?)
+# Pagination
 - APIs often return data in **chunks (pages)** instead of all at once, for efficiency.
 
 > [!example]
@@ -615,3 +616,6 @@ You **loop through all pages**, sending a GET request for each page and collecti
 > }
 > 
 > ```
+
+# URI Basics
+## Endpoints
