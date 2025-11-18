@@ -508,4 +508,32 @@ for (JsonNode user : users) {
     System.out.println("Name: " + name + ", Email: " + email);
 }
 ```
+## Jackson vs Gson
+### Annotations
+**Gson**
+- `@SerializedName` → rename fields for JSON mapping.
+
+**Jackson**
+- `@JsonProperty` → rename fields.
+- `@JsonIgnore` → ignore fields.
+- `@JsonCreator` → control constructor-based deserialization.
+- `@JsonInclude` → include/exclude null or default values.
+
+### Parsing Approach
+**Gson**
+- Uses `JsonElement`, `JsonObject`, and `JsonArray` for tree-based parsing.    
+- Can also map JSON directly to Java classes using `Gson.fromJson(json, Class.class)`.
+- Slightly slower for large JSON datasets.
+        
+**Jackson**
+- Uses `JsonNode` for tree-based parsing.
+- Maps JSON to Java classes using `ObjectMapper.readValue(json, Class.class)`.    
+- Extremely fast and optimized for large data.
+
+### Jackson preference
+- Jackson’s annotation system is **more extensive and flexible**, which is why it’s often preferred in enterprise applications.
+- **Jackson**: Default JSON library in Spring Boot, fully integrated with `@RestController`, `@RequestBody`, `@ResponseBody`.
+- Jackson is generally **faster** than Gson for large JSON structures.
+
+
 # Pagination, search(?)
