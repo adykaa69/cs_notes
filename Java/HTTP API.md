@@ -299,7 +299,7 @@
 ## Gson
 - Google JSON Library
 
-## Parse JSON String
+### Parsing JSON String
 > [!example]
 > ```java
 > import com.google.gson.JsonObject;
@@ -333,7 +333,7 @@
 > Email: Sincere@april.biz
 > ```
 
-### Parse nested JSON
+### Parsing nested JSON
 > [!example]
 > ```json
 > {
@@ -371,8 +371,45 @@
 > String city = address.get("city").getAsString();
 > ```
 
-### 
+### Parsing Arrays
+
+> [!example]
+> ```json
+> {
+>   "users": [
+>     {"name": "Alice", "email": "alice@example.com"},
+>     {"name": "Bob", "email": "bob@example.com"}
+>   ]
+> }
+> ```
+> ```java
+> String responseBody = """
+> {
+>   "users": [
+> 	{"name": "Alice", "email": "alice@example.com"},
+> 	{"name": "Bob", "email": "bob@example.com"}
+>   ]
+> }
+> """;
+> 
+> // Parse JSON
+> JsonElement element = JsonParser.parseString(responseBody);
+> JsonObject root = element.getAsJsonObject();
+> 
+> // Access array
+> JsonArray users = root.getAsJsonArray("users");
+> 
+> // Iterate over array
+> for (JsonElement userElement : users) {
+> 	JsonObject user = userElement.getAsJsonObject();
+> 
+> 	String name = user.get("name").getAsString();
+> 	String email = user.get("email").getAsString();
+> }
+> ```
+
+## Jackson
+- FasterXML Jackson library
+
 
 # Pagination, search(?)
-
-
