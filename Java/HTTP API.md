@@ -295,6 +295,44 @@
 > - `.join()` waits for the response (optional)
 
 # JSON Parsing
+
+## Gson
+- Google JSON Library
+
+## Parse JSON String
+> [!example]
+> ```java
+> import com.google.gson.JsonObject;
+> import com.google.gson.JsonElement;
+> import com.google.gson.JsonParser;
+> 
+> // Assume responseBody is the String from response.body()
+> String responseBody = """
+> {
+>   "id": 1,
+>   "name": "Leanne Graham",
+>   "username": "Bret",
+>   "email": "Sincere@april.biz"
+> }
+> """;
+> 
+> // Parse JSON string
+> JsonElement element = JsonParser.parseString(responseBody);
+> JsonObject obj = element.getAsJsonObject();
+> 
+> // Access fields
+> String name = obj.get("name").getAsString();
+> String email = obj.get("email").getAsString();
+> 
+> System.out.println("Name: " + name);
+> System.out.println("Email: " + email);
+> ```
+> ```
+> Output:
+> Name: Leanne Graham
+> Email: Sincere@april.biz
+> ```
+
 # Pagination, search(?)
 
 
