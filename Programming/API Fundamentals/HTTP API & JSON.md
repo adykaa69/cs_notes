@@ -480,35 +480,35 @@
 > ```
 
 ### Parsing Arrays
-[!example]
-```json
-{
-  "users": [
-    {"name": "Alice", "email": "alice@example.com"},
-    {"name": "Bob", "email": "bob@example.com"}
-  ]
-}
-```
-```java
-String responseBody = """
-{
-  "users": [
-    {"name": "Alice", "email": "alice@example.com"},
-    {"name": "Bob", "email": "bob@example.com"}
-  ]
-}
-""";
-
-ObjectMapper mapper = new ObjectMapper();
-JsonNode root = mapper.readTree(responseBody);
-JsonNode users = root.get("users");
-
-for (JsonNode user : users) {
-    String name = user.get("name").asText();
-    String email = user.get("email").asText();
-    System.out.println("Name: " + name + ", Email: " + email);
-}
-```
+> [!example]
+> ```json
+> {
+>   "users": [
+>     {"name": "Alice", "email": "alice@example.com"},
+>     {"name": "Bob", "email": "bob@example.com"}
+>   ]
+> }
+> ```
+> ```java
+> String responseBody = """
+> {
+>   "users": [
+>     {"name": "Alice", "email": "alice@example.com"},
+>     {"name": "Bob", "email": "bob@example.com"}
+>   ]
+> }
+> """;
+> 
+> ObjectMapper mapper = new ObjectMapper();
+> JsonNode root = mapper.readTree(responseBody);
+> JsonNode users = root.get("users");
+> 
+> for (JsonNode user : users) {
+>     String name = user.get("name").asText();
+>     String email = user.get("email").asText();
+>     System.out.println("Name: " + name + ", Email: " + email);
+> }
+> ```
 ## Jackson vs Gson
 ### Annotations
 **Gson**
@@ -619,3 +619,4 @@ You **loop through all pages**, sending a GET request for each page and collecti
 
 # URI Basics
 ## Endpoints
+https://chatgpt.com/c/690bad8e-55e0-832e-93c7-b54e7d2813a6
