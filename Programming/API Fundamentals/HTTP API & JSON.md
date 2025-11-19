@@ -1,3 +1,11 @@
+- [[#HTTP API]]
+- [[#Sending a Request]]
+- [[#JSON Parsing]]
+- [[#Pagination]]
+- [[#URI Basics]]
+
+
+# HTTP API
 [Baeldung - Exploring the New HTTP Client in Java](https://www.baeldung.com/java-9-http-client)
 [JSON Placeholder]("https://jsonplaceholder.typicode.com/users/1")
 - `java.net.http.HttpClient` API was introduced in Java 11
@@ -6,13 +14,13 @@
 	- easier to work with
 	- supporting synchronous and asynchronous calls
 
-# Basic Classes
+## Basic HTTP Classes
 - **[[#HttpClient]]**: the main client object used to send HTTP requests.
 - **[[#HttpRequest]]**: represents the request (method, URI, headers, body).
 - **[[#HttpResponse]]**: represents the response (status code, headers, body).
 	- **BodyHandlers**: specify how to handle the response body (as string, byte array, file, etc.).
 
-## HttpClient
+### HttpClient
 [Class HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
 > [!example]
 > **Basic HttpClient**
@@ -85,9 +93,9 @@
 >>> ```
 >>> The client will automatically send credentials **when challenged by the server**.
 
-## HttpRequest
+### HttpRequest
 [Class HttpRequest](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpRequest.html)
-### Methods
+#### Methods
 > [!example]
 > ```java
 > import java.net.http.HttpRequest;
@@ -98,7 +106,7 @@
 >     .GET()  // HTTP method
 >     .build();
 > ```
-#### GET
+##### GET
 > [!example]
 > ```java
 > HttpRequest getRequest = HttpRequest.newBuilder()
@@ -108,7 +116,7 @@
 >     .build();
 > ```
 
-#### POST
+##### POST
 > [!example]
 > ```java
 > String json = "{\"name\":\"John Doe\"}";
@@ -122,7 +130,7 @@
 > - `POST(BodyPublisher)` sends a body (string, byte array, or file)
 > - `BodyPublishers.ofString(json)` — simplest way for JSON payload
 
-#### PUT
+##### PUT
 > [!example]
 > ```java
 > String json = "{\"name\":\"John Doe\"}";
@@ -135,7 +143,7 @@
 > ```
 > - Similar to POST
 
-#### PATCH
+##### PATCH
 > [!example]
 > ```java
 > HttpRequest patchRequest = HttpRequest.newBuilder()
@@ -149,7 +157,7 @@
 >>- Java `HttpClient` does **not have a built-in PATCH method**
 >> - Use `method("PATCH", BodyPublishers)`
 
-#### DELETE
+##### DELETE
 > [!example]
 > ```java
 > HttpRequest deleteRequest = HttpRequest.newBuilder()
@@ -158,7 +166,7 @@
 >     .build();
 > ```
 
-### Headers
+#### Headers
 > [!info] 
 > ```java
 > HttpRequest request = HttpRequest.newBuilder()
@@ -174,7 +182,7 @@
 > ```
 > Use `.headers(String...)` to add multiple in one call
 
-#### Accept vs Content-Type
+##### Accept vs Content-Type
 - Accept: Response format I can understand
 	- ```java
 	  .header("Accept", "application/json")
@@ -186,7 +194,7 @@
 	  // I am sending JSON in body
 	  ```
 
-### Timeout Per Request
+#### Timeout Per Request
 > [!info]
 > ```java
 > HttpRequest request = HttpRequest.newBuilder()
@@ -198,7 +206,7 @@
 > - Overrides the `HttpClient` global timeout (if set)   
 > - If exceeded → `HttpTimeoutException` is thrown
 
-### HTTP Version Override
+#### HTTP Version Override
 > [!info]
 > ```java
 > HttpRequest request = HttpRequest.newBuilder()
@@ -210,14 +218,14 @@
 > - If omitted, uses client default (`HTTP_2` or `HTTP_1_1`)
 > - Useful if you want to test HTTP/1.1 explicitly
 
-### Body Publishers
+#### Body Publishers
 - **No body**: `.GET()` or `.noBody()`
 - **String**: `BodyPublishers.ofString("...")`
 - **Byte array**: `BodyPublishers.ofByteArray(byte[])`
 - **File**: `BodyPublishers.ofFile(Path path)`
 	-    ->  `.POST(HttpRequest.BodyPublishers.ofFile(Path.of("file.txt")))`
 
-### URI
+#### URI
 > [!info]
 > ```java
 > URI uri = URI.create("https://api.example.com/users");
@@ -665,6 +673,7 @@ URI can be split into several parts:
 6. Hash `#`
 	- Fragment / anchor, usually handled client-side, not sent to server
 	- Example: `/users/42#posts`
+	- Fragments **NEVER matter** in REST or API programming.
 7. Colon `:`
 	- Separates scheme from host (`https:`)
 	- Separates host and port (`api.example.com:8080`)
