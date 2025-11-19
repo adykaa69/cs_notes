@@ -618,5 +618,28 @@ You **loop through all pages**, sending a GET request for each page and collecti
 > ```
 
 # URI Basics
-## Endpoints
-https://chatgpt.com/c/690bad8e-55e0-832e-93c7-b54e7d2813a6
+- **URI (Uniform Resource Identifier)** identifies a resource on the web.
+
+## URI parts
+URI can be split into several parts:
+`scheme://host:port/path?query#fragment`
+
+- **scheme** → protocol (http, https, ftp)
+- **host** → domain or IP (api.example.com)
+- **port** → optional (default 80 for HTTP, 443 for HTTPS)
+- **path** → resource location (`/users/42`)
+- **query** → optional parameters (`?page=2&sort=asc`)
+- **fragment** → optional anchor (`#section1`)
+
+> [!example]
+> `https://api.example.com/users/42?verbose=true#details`
+> - scheme: `https`
+> - host: `api.example.com`
+> - path: `/users/42`
+> - query: `verbose=true`
+> - fragment: `details`
+
+## Symbols in URIs
+1. Slash `/`
+	- Separates **path segments**.
+	- 
