@@ -642,4 +642,29 @@ URI can be split into several parts:
 ## Symbols in URIs
 1. Slash `/`
 	- Separates **path segments**.
-	- 
+	- Example: `/users/42/tasks` → 42’s tasks
+2. Question mark `?`
+	- Marks the start of the **query string** (parameters)
+	- Example: `/users?page=2&limit=10`
+3. Ampersand `&`
+	- Separates **multiple query parameters**
+	- Example: `/users?page=2&sort=asc` 
+	→ two parameters: 
+		- `page=2`
+		- `sort=asc`
+4. Equals `=`
+	- Assigns a **value to a query parameter**
+	- Example: `page=2` 
+	→
+		- key `page`-
+		- value `2`
+5. Curly braces `{}`
+	- Placeholder for **path variables** in REST endpoints
+	- Example: `/users/{id}` 
+	→ replace `{id}` with actual ID
+6. Hash `#`
+	- Fragment / anchor, usually handled client-side, not sent to server
+	- Example: `/users/42#posts`
+7. Colon `:`
+	- Separates scheme from host (`https:`)
+	- Separates host and port (`api.example.com:8080`)
