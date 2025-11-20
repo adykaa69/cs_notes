@@ -3,6 +3,7 @@
 - [[#JSON Parsing]]
 - [[#Pagination]]
 - [[#URI Basics]]
+<br/>
 
 
 # HTTP API
@@ -242,7 +243,7 @@
 > - Needs try-catch
 > - More flexible, safer if you expect invalid input or need to construct from parts
 
-## HttpResponse
+### HttpResponse
 [Interface HttpResponse\<T>](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.html)
 - `HttpResponse<T>` contains several key parts:
 	- `statusCode()` - returns HTTP status code
@@ -304,6 +305,10 @@
 > - `.join()` waits for the response (optional)
 
 # JSON Parsing
+- [[#Gson]]
+- [[#Jackson]]
+- [[#Jackson vs Gson]]
+
 
 ## Gson
 - Google JSON Library
@@ -673,7 +678,8 @@ URI can be split into several parts:
 6. Hash `#`
 	- Fragment / anchor, usually handled client-side, not sent to server
 	- Example: `/users/42#posts`
-	- Fragments **NEVER matter** in REST or API programming.
+>[!info]
+> Fragments **NEVER matter** in REST or API programming.
 7. Colon `:`
 	- Separates scheme from host (`https:`)
 	- Separates host and port (`api.example.com:8080`)
