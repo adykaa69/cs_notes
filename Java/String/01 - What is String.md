@@ -115,3 +115,4 @@ More on [[immutability]] #todo
 	- Logging
 	- Persistence
 ### 1.6.2 `String` is `final`
+- continue: https://chatgpt.com/c/693e8a6c-5dcc-8327-8eec-0d6a62a679ec
