@@ -75,5 +75,26 @@ More on [[immutability]] #todo
 > ```
 
 ### 1.6.1 `CharSequence`
-- String implements `CharSequence`
+- `String` implements `CharSequence`
 	- It means it behaves like a sequence of characters
+- Methods:
+	- length()
+	- charAt()
+	- subSequence()
+- Other classes also implement `CharSequence`:
+	- [[StringBuilder]] #todo 
+	- [[StringBuffer]] #todo 
+### 1.6.2 `Comparable<String>`
+- `String` implements `Comparable<String>`
+	- It means Strings can be compared and sorted
+```java
+"apple".compareTo("banana"); // negative
+```
+
+- Used in:
+	- Sorting
+	- TreeMap / TreeSet
+	- Ordering Logic
+
+### 1.6.3 `Serializable`
+- `String` implements `Serializable`
