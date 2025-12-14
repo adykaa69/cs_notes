@@ -52,4 +52,28 @@
 	- Once a `String` object is created, it can never change.
 	- --> `String` is **immutable**
 [!example]
-``
+> ```java
+> String s = "Hello";
+> s = s + "World"; 
+> ```
+> - What happens?
+> 	- `"Hello"` is not modified
+> 	- A new `String`: `"Hello World"` is created
+> 	- `s` now **points** to the new object
+> - Why is this important?
+> 	- [[Thread safety]] #todo 
+> 	- Security (passwords, URLs, class names)
+> 	- String pool optimization
+
+More on [[immutability]] #todo
+
+## 1.6 `String` implements important interfaces
+- `String` is not just “text”. As everything in Java, it is a Class and it’s deeply integrated into Java.
+> ```java
+> public final class String
+>     implements Serializable, Comparable<String>, CharSequence
+> ```
+
+### 1.6.1 `CharSequence`
+- String implements `CharSequence`
+	- It means it behaves like a sequence of characters
