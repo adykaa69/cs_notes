@@ -67,14 +67,17 @@
 
 More on [[immutability]] #todo
 
-## 1.6 `String` implements important interfaces
-- `String` is not just “text”. As everything in Java, it is a Class and it’s deeply integrated into Java.
+## 1.6 String integration in Java
+- `String` is not just “text”. As everything in Java, it is a Class and it’s deeply integrated into Java
+
+### 1.6.1 `String` implements important interfaces
+> [!note]
 > ```java
 > public final class String
 >     implements Serializable, Comparable<String>, CharSequence
 > ```
 
-### 1.6.1 `CharSequence`
+#### 1.6.1.1 `CharSequence`
 - `String` implements `CharSequence`
 	- It means it behaves like a sequence of characters
 - Methods:
@@ -84,17 +87,31 @@ More on [[immutability]] #todo
 - Other classes also implement `CharSequence`:
 	- [[StringBuilder]] #todo 
 	- [[StringBuffer]] #todo 
-### 1.6.2 `Comparable<String>`
+	
+#### 1.6.1.2 `Comparable<String>`
 - `String` implements `Comparable<String>`
 	- It means Strings can be compared and sorted
-```java
-"apple".compareTo("banana"); // negative
-```
+> [!example]
+> ```java
+> "apple".compareTo("banana"); // negative  
+> ```
+> - negative -> `"apple"` comes before `"banana"`
 
 - Used in:
 	- Sorting
 	- TreeMap / TreeSet
 	- Ordering Logic
 
-### 1.6.3 `Serializable`
+#### 1.6.1.3 `Serializable`
 - `String` implements `Serializable`
+	- It means String can be written to:
+		- Files
+		- Network
+		- JSON
+		- Database
+	- Without special handling
+- Crucial for:
+	- Rest APIs
+	- Logging
+	- Persistence
+### 1.6.2 `String` is `final`
