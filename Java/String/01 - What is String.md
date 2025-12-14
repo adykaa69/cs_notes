@@ -48,5 +48,8 @@
 > - There is one `"Hello"` object in memory
 
 ## 1.4 Immutability
-- One of the most important properties of String:
-	- Once a String object is created, it can never change.
+- One of the most important properties of `String`:
+	- Once a `String` object is created, it can never change.
+	- --> `String` is **immutable**
+[!example]
+``
