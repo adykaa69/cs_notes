@@ -30,17 +30,23 @@
 	- [[String Constant Pool]] #todo (SCP)
 	- performance issues
 ## 1.3 String is a reference type
-> [!example]
+> [!example] 
+> Primitive type
 > ```java
 > int a = 10;
 > int b = a;
 > ```
 > - `a` and `b` are completely independent
 
-> [!example]
+> [!example] 
+> Reference type
 > ```java
 > String s1 = "Hello";
 > String s2 = s1;
 > ```
 > - `s1` and `s2` **point** to the same `String` object
 > - There is one `"Hello"` object in memory
+
+## 1.4 Immutability
+- One of the most important properties of String:
+	- Once a String object is created, it can never change.
