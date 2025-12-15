@@ -1,4 +1,13 @@
 # 1. What is a `String` in Java?
+
+[[#1.1 What `String` represents]]
+[[#1.2 String is a class, not a primitive]]
+[[#1.3 String is a reference type]]
+[[#1.6 String integration in Java]]
+	[[#1.6.1 `String` implements important interfaces]]
+		[[#1.6.1.1 `CharSequence`]]
+		[[#]]
+
 ## 1.1 What `String` represents
 - In Java, a `String` represents **text** — a sequence of **characters**.
 - Examples of a **text** (`String`)
@@ -115,4 +124,19 @@ More on [[immutability]] #todo
 	- Logging
 	- Persistence
 ### 1.6.2 `String` is `final`
+```java
+public final class String
+``` 
+
+- `final` means, we cannot extend the `String` class
+```java
+class MyString extends String {} // impossible
+```
+- Reason:
+	- Security (no malicious overrides)
+	- Consistency
+	- JVM optimizations
+	- --> It is guaranteed that a `String` behaves the same everywhere in the JVM.
+
+ 
 - continue: https://chatgpt.com/c/693e8a6c-5dcc-8327-8eec-0d6a62a679ec
