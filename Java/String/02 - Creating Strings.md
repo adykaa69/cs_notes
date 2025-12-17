@@ -1,6 +1,14 @@
 
 # 2. Creating Strings
 In Java, there are **multiple ways to create Strings**
+
+- [[#2.1 String literals]]
+- [[#2.2 Using constructors]]
+	- [[#2.2.1 Regular `String` constructor]]
+	- [[#2.2.2 Other constructors]]
+		- [[#2.2.2.1 From `char[]`]]
+		- [[#2.2.2.2 From `byte[]`]]
+		- [[#2.2.2.3 From `StringBuilder` or `StringBuffer`]]
 ## 2.1 String literals
 > [!example]
 > ```java
@@ -8,7 +16,7 @@ In Java, there are **multiple ways to create Strings**
 > String s2 = "hello";
 > ```
 > - `"hello"` is a String literal
-> - It is stored in the [[**String Constant Pool** ]] #todo(SCP)
+> - It is stored in the [[03. - String Memory Allocation#3.2 String Constant Pool (SCP) | String C]] #todo(SCP)
 > - s1 and s2 point to the same object in memory
 >> [!info] Comparison
 >> ```java
