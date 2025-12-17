@@ -16,8 +16,8 @@ In Java, there are **multiple ways to create Strings**
 > String s2 = "hello";
 > ```
 > - `"hello"` is a String literal
-> - It is stored in the [[03. - String Memory Allocation#3.2 String Constant Pool (SCP) | String C]] #todo(SCP)
-> - s1 and s2 point to the same object in memory
+> - It is stored in the [[03. - String Memory Allocation#3.2 String Constant Pool (SCP) | String Constant Pool (SCP)]]
+> - `s1` and `s2` point to the same object in memory
 >> [!info] Comparison
 >> ```java
 >> System.out.println(s1 == s2); // true
@@ -31,6 +31,7 @@ In Java, there are **multiple ways to create Strings**
 > ```
 > - The compiler may combine constants at compile-time
 > - No new String object is created at runtime if both parts are constants
+> [[03. - String Memory Allocation#3.5.2 Compile-Time String Creation]]
 
 #### What does "compile-time constant mean?"
 - A **compile-time constant** is a value that the **Java compiler can fully determine at compile time**, without needing the program to run.
@@ -45,7 +46,7 @@ In Java, there are **multiple ways to create Strings**
 > String s1 = "hello";
 > String s4 = new String("hello");
 > ```
-> - `new String ("hello")` creates a **new `String` object on the [[heap]] #todo**, **not in the [[SCP]] #todo**
+> - `new String ("hello")` creates a **new `String` object on the [[03. - String Memory Allocation#3.4 `new String()` and Heap Allocation| heap]] **, **not in the [[03. - String Memory Allocation#3.2 String Constant Pool (SCP) | SCP]]**
 >> [!info] Comparison
 >> ```java
 >> System.out.println(s4 == s1); // false
