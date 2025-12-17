@@ -1,0 +1,1 @@
+https://chatgpt.com/c/693e8a6c-5dcc-8327-8eec-0d6a62a679ec#:~:text=pool%2C%20and%20performance.-,2.%20Creating%20Strings,-In%20Java%2C%20there

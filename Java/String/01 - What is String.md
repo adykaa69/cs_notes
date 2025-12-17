@@ -1,12 +1,14 @@
 # 1. What is a `String` in Java?
 
-[[#1.1 What `String` represents]]
-[[#1.2 String is a class, not a primitive]]
-[[#1.3 String is a reference type]]
-[[#1.6 String integration in Java]]
-	[[#1.6.1 `String` implements important interfaces]]
-		[[#1.6.1.1 `CharSequence`]]
-		[[#]]
+- [[#1.1 What `String` represents]]
+- [[#1.2 String is a class, not a primitive]]
+- [[#1.3 String is a reference type]]
+- [[#1.6 String integration in Java]]
+	- [[#1.6.1 `String` implements important interfaces]]
+		- [[#1.6.1.1 `CharSequence`]]
+		- [[#1.6.1.2 `Comparable<String>`]]
+		- [[#1.6.1.3 `Serializable`]]
+	- [[#1.6.2 `String` is `final`]]
 
 ## 1.1 What `String` represents
 - In Java, a `String` represents **text** — a sequence of **characters**.
