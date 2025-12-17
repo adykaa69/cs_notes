@@ -10,9 +10,10 @@ In Java, there are **multiple ways to create Strings**
 > - `"hello"` is a String literal
 > - It is stored in the [[**String Constant Pool** ]] #todo(SCP)
 > - s1 and s2 point to the same object in memory
-> ```java
-> System.out.println(s1 == s2); // true
-> ```
+>> [!note]
+>> ```java
+>> System.out.println(s1 == s2); // true
+>> ```
 
 ### Compile time constants
 > [!example]
@@ -30,12 +31,28 @@ In Java, there are **multiple ways to create Strings**
 	- The value is **`final`**
 	- The value is made only from **other compile-time constants**
 ## 2.2 Using constructors
+### 2.2.1 Regular `String` constructor
 > [!example]
 > ```java
 > String s1 = "hello";
 > String s4 = new String("hello");
 > ```
 > - `new String ("hello")` creates a **new `String` object on the [[heap]] #todo**, **not in the [[SCP]] #todo**
+>> [!note]
+>> ```java
+>> System.out.println(s4 == s1); // false
+>> ```
+> - Rarely needed
+> - Usually wasteful in modern Java
+### 2.2.2 Other constructors
+#### 2.2.2.1 From `char[]`
+> [!example]
 > ```java
-> System.out.println(s4 == s1); // false
+> char[] chars = {'h','e','l','l','o'};
+> String s5 = new String(chars);
 > ```
+> - Converts a character array into a `String`
+> - Common when reading low-level APIs
+#### 2.2.2.2 From `byte[]`
+> [!example]
+
