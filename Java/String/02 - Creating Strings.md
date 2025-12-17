@@ -1,1 +1,16 @@
-https://chatgpt.com/c/693e8a6c-5dcc-8327-8eec-0d6a62a679ec#:~:text=pool%2C%20and%20performance.-,2.%20Creating%20Strings,-In%20Java%2C%20there
+
+# 2. Creating Strings
+In Java, there are **multiple ways to create Strings**
+## 2.1 String literals
+> [!example]
+> ```java
+> String s1 = "hello";
+> String s2 = "hello";
+> ```
+> - `"hello"` is a String literal
+> - It is stored in the [[**String Constant Pool** ]] #todo(SCP)
+> - s1 and s2 point to the same object in memory
+> ```java
+> System.out.println(s1 == s2); // true
+> ```
+## 2.2 Using constructors
