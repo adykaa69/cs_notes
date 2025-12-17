@@ -42,8 +42,11 @@ In Java, there are **multiple ways to create Strings**
 >> ```java
 >> System.out.println(s4 == s1); // false
 >> ```
-> - Rarely needed
-> - Usually wasteful in modern Java
+#### Why avoid String constructor?
+- Wasteful memory usage
+- Slower performance
+- Breaks `==` checks if mistakenly used
+- Rarely necessary; only useful if you need a **distinct object** for some obscure reason
 ### 2.2.2 Other constructors
 #### 2.2.2.1 From `char[]`
 > [!example]
@@ -55,4 +58,19 @@ In Java, there are **multiple ways to create Strings**
 > - Common when reading low-level APIs
 #### 2.2.2.2 From `byte[]`
 > [!example]
-
+> ```java
+> byte[] bytes = {104, 101, 108, 108, 111}; // ASCII codes
+> String s6 = new String(bytes, StandardCharsets.UTF_8);
+> ```
+> - Converts bytes into a String 
+> - Always specify a charset to avoid platform-dependent bugs
+#### 2.2.2.3 From `StringBuilder` or `StringBuffer`
+> [!example]
+> ```java
+> StringBuilder sb = new StringBuilder();
+>sb.append("Hello").append(" World");
+>String s7 = sb.toString();
+> ```
+> - Converts a **mutable sequence** into a **`String`**
+> - `sb.toString()` creates a new `String`   
+> - The original `StringBuilder` can be reused and modified
