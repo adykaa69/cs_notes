@@ -62,7 +62,7 @@
 - One of the most important properties of `String`:
 	- Once a `String` object is created, it can never change.
 	- --> `String` is **immutable**
-[!example]
+> [!example]
 > ```java
 > String s = "Hello";
 > s = s + "World"; 

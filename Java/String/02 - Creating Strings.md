@@ -38,7 +38,7 @@ In Java, there are **multiple ways to create Strings**
 > String s4 = new String("hello");
 > ```
 > - `new String ("hello")` creates a **new `String` object on the [[heap]] #todo**, **not in the [[SCP]] #todo**
->> [!note]
+>> [!info]
 >> ```java
 >> System.out.println(s4 == s1); // false
 >> ```
