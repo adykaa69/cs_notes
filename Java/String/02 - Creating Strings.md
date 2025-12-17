@@ -15,7 +15,7 @@ In Java, there are **multiple ways to create Strings**
 >> System.out.println(s1 == s2); // true
 >> ```
 
-### Compile time constants
+### Compile-time constants
 > [!example]
 > ```java
 > final String HELLO = "hello";
