@@ -266,7 +266,7 @@ public void readFile() throws IOException
 > }
 > ```
 > **[[#Unchecked Exceptions|Unchecked]]** custom exception `extends` `RuntimeException`
-> ```
+> ```java
 > public void setPrice(double price) {
 >     if (price < 0) {
 >         throw new BusinessRuleException("Price must be non-negative");
